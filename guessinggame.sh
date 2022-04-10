@@ -5,7 +5,14 @@ num_files=3
 echo "Good day! Welcome to guessinggame!"
 echo "Please guess how many files are in the current directory:"
 
-source check_num.sh
+function check_num {
+	local re='^[+-]?[0-9]+$'
+	if ! [[ $1 =~ $re ]]
+	then 
+		echo "error: Not a number. Please re-enter your guess:"
+		read guess
+	fi
+}
 
 read guess
 
